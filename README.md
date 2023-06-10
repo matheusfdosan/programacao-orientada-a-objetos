@@ -2,7 +2,7 @@
 
 ## O que é Programação Orientada a Objetos POO?
 
-Vem do inglês, Oriented Object Programming ou OOP, que é um paradigma de desenvolvedor, ou seja, é uma maneira de pensar e de resolver um problema. No caso, vamos pensar nas coisas como um objeto, logo, o POO não está ligado somente a liguagem programação, mas a um entendimento amplo e atemporal para a criação de softwares.
+Vem do inglês, Oriented Object Programming ou OOP, que é um paradigma de desenvolvedor, o que é um paradigma? É uma maneira de pensar e de resolver um problema. No caso, vamos pensar nas coisas como um objeto, logo, o POO não está ligado somente a liguagem programação, mas a um entendimento amplo e atemporal para a criação de softwares.
 
 Usar o POO pode melhorar o entendimento do código, pesando nele como objetos. Separando a complexibilidade de código, abstrair e expor de maneira mais simples.
 
@@ -22,7 +22,7 @@ Linguagens que são multiparadigmas, são linguagens que tem como escolher progr
 
 ## Objetos
 
-Os objetos podem ser qualquer coisa, por exemplo, uma celular. Todo objeto possui propriedades (atributos), funcionalidades (métodos ou comportamentos) e um estado:
+Os objetos podem ser qualquer coisa, por exemplo, uma celular. Todo objeto possui propriedades (atributos), funcionalidades (métodos) e um estado:
 
 - Um celular tem suas propriedades, tem uma cor, um peso, um tamanho e etc.
 - E tem suas funcionalidades, ele liga, manda mensagens, tira fotos entre outros.
@@ -30,7 +30,7 @@ Os objetos podem ser qualquer coisa, por exemplo, uma celular. Todo objeto possu
 
 ## Objetos abstratos vs objetos do mundo real
 
-É fácil trazer uma representação de algo do mundo real para objetos, como uma pessoa, um aluno, um produto ou até mesmo um carrinho de compras. Porém, alguns objetos na programação não são fáceis de identificar, pois são abstratos, como uma autenticação ou autorização.
+É fácil trazer uma representação de algo do mundo real para objetos, como uma pessoa, um aluno, um produto ou até mesmo um carrinho de compras. Porém, alguns objetos na programação não são fáceis de identificar, pois são abstratos, como uma autenticação, autorização, gerenciamento de sessões, entre outros.
 
 > Nem todo objeto do mundo real fará parte do seu sistema.
 
@@ -67,15 +67,21 @@ class Pessoa {
 // instanciando - tirando o biscoito da máquina
 const pessoa1 = new Pessoa("Matheus")
 
+// utilizando as propriedades
+console.log(pessoa1.nome) // Matheus
+console.log(pessoa1.id) // ramdom number
+
 // utilizando a funcionalidade
 pessoa1.dizerNome() // Matheus
 ```
 
+## Prototypes
+
 Porém, percebemos no JavaScript, que mesmo com as funcionalidades criadas na classe, o JavaScript trará mais funcionalidades, o que chamamos de herança, ou seja, há uma matriz de classes no JavaScript que herdam funcionalidades:
 
 ```js
-console.log(pessoa1.nome.length)
-console.log(pessoa1.id.toString())
+console.log(pessoa1.nome.length) // 7
+console.log(pessoa1.id.toString()) // "123"
 ```
 
 `pessoa1.nome`, por ser uma string, vai herdar funcionalidades de uma string como `length`, `slice`, `indexação[1]`, `trim` e etc. E `pessoa.id` também herdará funcionalidades de números.
@@ -88,7 +94,7 @@ Encapsulamento é colocar numa cápsula, um agrupamento de funções e variávei
 
 O conceito de encapsulamento, é como dirigir um carro sem precisar entender como ele funciona, é possível dirigir um carro e deixar as partes complexas para outro momento.
 
-## Encapsulamento na prática
+### Encapsulamento na prática
 
 ```js
 // Estrutural
@@ -134,7 +140,7 @@ Definimos uma classe `Poligono`, que traz um objeto que tem as propriedades de a
 
 Depois, temos o método `area`, que é definido como um **getter**, que permite acessá-la como se fosse uma propriedade, ou seja, não precisa de parênteses para seu uso. Esse método retorna o resultado do método privado `#calcularArea()`, o prefixo `#`, o torna um método privado.
 
-O método privado é um método que não vai ser utilizado pelo programador, seu acesso é apenas dentro da classe. Fora da classe, com o objeto instânciado, esse método não estará acessível
+O método privado é um método que não vai ser utilizado pelo programador, seu acesso é apenas dentro da classe. Fora da classe, com o objeto instânciado, esse método não estará acessível.
 
 ```js
 console.log(poligono.#calcularArea())
@@ -143,9 +149,9 @@ console.log(poligono.#calcularArea())
 
 ## Programação Estruturada vs POO
 
-Vai processar a entrada dos dados, e manipular até a saída dos dados, uma maneira linear de fazer as coisas. O uso de sequências, um código vem abaixo do outro, podendo ter sobrescrições de variáveis, além de, usar estruturas de repetições e condições. Sendo assim, uma bagunça no código!
+A programação estruturada vai processar a entrada dos dados, e manipular até a saída dos dados, uma maneira linear de fazer as coisas. O uso de sequências, um código vem abaixo do outro, podendo ter sobrescrições de variáveis, além de, usar estruturas de repetições e condições. Sendo assim, uma bagunça no código!
 
-A solução para isso, é a programação orientada a objetos, pois surge um cuidado ao uso estruturado, trazendo o conceito como objetos, classes, encapsulamento e heranças.
+A solução para isso, é a programação orientada a objetos, pois surge um cuidado ao uso estruturado, trazendo o seus conceitos.
 
 Exemplo estruturado:
 
@@ -221,9 +227,6 @@ Quando um objeto estende o outro (`herança`) talvez haja necessidade de reescre
 
 ```js
 class Atleta {
-  peso
-  altura
-
   constructor(peso) {
     this.peso = peso
   }
@@ -291,8 +294,8 @@ class Parafuso {
   constructor() {
     // SuperClasse
     if (this.constructor === Parafuso)
-      throw new Error("Classe abstrata não pode ser instânciada")
-    // Garante que a claasse não seja instanciada diretamente
+      throw new Error("Classe abstrata não pode ser instanciada")
+      // Garante que a claasse não seja instanciada diretamente
   }
 
   get tipo() {
